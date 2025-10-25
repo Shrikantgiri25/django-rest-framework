@@ -192,7 +192,7 @@ class TestRegularFieldMappings(TestCase):
                 url_field = URLField\(max_length=100\)
                 custom_field = ModelField\(model_field=<.*CustomField: custom_field>\)
                 file_path_field = FilePathField\(path='%s'\)
-        """ % tempfile.gettempdir().replace('\\', r'\\\\'))
+        """ % re.escape(tempfile.gettempdir()))
 
         assert re.search(expected, repr(TestSerializer()), re.DOTALL) is not None
 
